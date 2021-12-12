@@ -1,0 +1,21 @@
+[
+  {
+    "type": "Drawing"
+  },
+  {
+    "type": "Finding"
+  },
+  {
+    "type": "Singing"
+  },
+  {
+    "type": "Dancing"
+  },
+  {
+    "type": "Chatting",
+    "verb": "tell"
+  },
+  {
+    "type": "Building"
+  }
+]
