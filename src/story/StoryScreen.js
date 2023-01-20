@@ -4,6 +4,8 @@ import {Text, View, Dimensions, Platform} from 'react-native';
 import {connect} from "react-redux";
 const SCREEN_WIDTH = Dimensions.get('window').width;
 import * as story_actions from '../settings/actions/settings_actions';
+import {ContainerStyles} from "../common/styles/ContainerStyles";
+import {Button} from "../common/components";
 
 class StoryScreen extends Component {
 
@@ -24,11 +26,20 @@ class StoryScreen extends Component {
         }
     }
 
+    createFable() {
+
+    }
+
     render() {
         return (
-                    <View style={{flex: 1}}>
-                        <Text>Add your toys</Text>
-                    </View>
+            <View style={[ContainerStyles.centerV,ContainerStyles.container, {padding:40}]}>
+                        <Text>Make me a play</Text>
+                <Text>Toys - generate random</Text>
+                <Text>Length - medium</Text>
+
+                <Button onPress={()=> this.createFable()} valid>Create Fable</Button>
+
+            </View>
         )
     }
 }

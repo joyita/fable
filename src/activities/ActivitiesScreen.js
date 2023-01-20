@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View, Dimensions, Platform} from 'react-native';
+import {Text, View, Dimensions, Platform, ScrollView} from 'react-native';
 import {connect} from "react-redux";
 const SCREEN_WIDTH = Dimensions.get('window').width;
 import * as activities_actions from './actions/activites_actions';
 import {createStackNavigator} from "@react-navigation/stack";
+import {ContainerStyles} from "../common/styles/ContainerStyles";
+import {ToyListing} from "../toys/ToyListing";
+import {ActivityListing} from "./ActivityListing";
 
 class ActivitiesScreen extends Component {
 
@@ -14,6 +17,7 @@ class ActivitiesScreen extends Component {
 
     componentDidMount() {
     }
+
     constructor(nextProps) {
         super(nextProps)
     }
@@ -24,17 +28,34 @@ class ActivitiesScreen extends Component {
         }
     }
 
+    openActivity() {
+
+    }
+
+    renderActivityList() {
+        return this.props.activities.map(
+            (item) => {
+                return (
+                    <ActivityListing onPress={() => this.openActivty(item)} activity={item} key={item.type}/>
+                )
+            }
+        )
+    }
+
     render() {
         return (
-                    <View>
+            <View style={[ContainerStyles.centerV,ContainerStyles.container, {padding:40}]}>
                         <Text>Choose your Activites</Text>
-                    </View>
+                <ScrollView directionalLockEnabled={true}>
+                    {this.renderActivityList()}
+                </ScrollView>
+            </View>
         )
     }
 }
 
-function mapStateToProps({toys}) {
-    return {...toys};
+function mapStateToProps({activities}) {
+    return {...activities};
 }
 
 export default connect(mapStateToProps, activities_actions)(ActivitiesScreen);
